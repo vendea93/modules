@@ -1,0 +1,56 @@
+{
+    "name": "Perfex Integration",
+    "directory": "perfex-integration",
+    "version": "3.9.3",
+    "description": "Intergrate Perfex to your Zender",
+    "author": "TitanSystems",
+    "author_url": "https://codecanyon.net/user/titansystems",
+    "data": {
+        "prefix": {
+            "label": "Plugin Prefix",
+            "type": "text",
+            "required": true,
+            "description": "The unique plugin prefix. This will be used to identify your plugin in Perfex. It should be unique and should not contain any special characters or spaces.",
+            "value": "my_prefix"
+        },
+        "version": {
+            "label": "Plugin Version",
+            "type": "text",
+            "required": true,
+            "description": "The version of the plugin. This will be displayed in the Perfex admin panel.",
+            "value": "3.9"
+        },
+        "name": {
+            "label": "Plugin Name",
+            "type": "text",
+            "required": true,
+            "description": "The name of the plugin. This will be displayed in the Perfex admin panel.",
+            "value": ""
+        },
+        "desc": {
+            "label": "Plugin Description",
+            "type": "text",
+            "required": true,
+            "description": "A short description of the plugin. This will be displayed in the Perfex admin panel.",
+            "value": ""
+        },
+        "author": {
+            "label": "Author Name",
+            "type": "text",
+            "required": true,
+            "description": "Your name or the name of your company. This will be displayed in the Perfex admin panel.",
+            "value": "Your Name"
+        },
+        "author_uri": {
+            "label": "Author URL",
+            "type": "text",
+            "required": true,
+            "description": "The URL of your website. This will be displayed in the Perfex admin panel.",
+            "value": "https://yourdomain.com"
+        }
+    },
+    "assets": [
+        "assets/plugin.js",
+        "assets/plugin.css"
+    ]
+}

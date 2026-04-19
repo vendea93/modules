@@ -1,0 +1,52 @@
+{
+  "form_id": "demo1",
+  "base_url": "http://localhost:8080",
+  "webhook_secret": "",
+  "test_data": {
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "+1234567890",
+    "message": "This is a test submission",
+    "company": "Test Company Inc."
+  },
+  "examples": [
+    {
+      "description": "Contact form submission",
+      "data": {
+        "first_name": "Jane",
+        "last_name": "Smith",
+        "email": "jane.smith@example.com",
+        "phone": "555-1234",
+        "message": "I'm interested in your services"
+      }
+    },
+    {
+      "description": "Newsletter signup",
+      "data": {
+        "email": "subscriber@example.com",
+        "name": "Newsletter Subscriber"
+      }
+    },
+    {
+      "description": "Lead generation form",
+      "data": {
+        "name": "Potential Customer",
+        "email": "lead@example.com",
+        "phone": "+1-555-9876",
+        "company": "Acme Corp",
+        "message": "Interested in pricing"
+      }
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+

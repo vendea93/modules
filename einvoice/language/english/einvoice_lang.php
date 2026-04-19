@@ -1,0 +1,40 @@
+<?php
+
+defined('BASEPATH') or exit('No direct script access allowed');
+
+$lang['einvoice'] = 'e-Invoice';
+$lang['settings_group_einvoice'] = 'e-Invoice';
+$lang['einvoice_module_bulk_export'] = 'e-Invoice export';
+$lang['einvoice_module_permission_bulk'] = 'Bulk export';
+$lang['settings_einvoice_default_template'] = 'Default invoice e-Invoice template';
+$lang['settings_einvoice_default_credit_note_template'] = 'Default credit note e-Invoice template';
+$lang['settings_einvoice_send_as_invoice_email_attachment'] = 'Attach e-Invoice to invoice emails';
+$lang['settings_einvoice_send_as_credit_note_email_attachment'] = 'Attach e-Invoice to credit note emails';
+$lang['settings_einvoice_templates'] = 'Manage e-Invoice templates';
+$lang['einvoice_ksef_heading'] = 'KSeF sync';
+$lang['einvoice_ksef_enabled'] = 'Enable KSeF sync';
+$lang['einvoice_ksef_environment'] = 'Environment';
+$lang['einvoice_ksef_env_demo'] = 'Demo / test';
+$lang['einvoice_ksef_env_production'] = 'Production';
+$lang['einvoice_ksef_api_url'] = 'KSeF API / middleware URL';
+$lang['einvoice_ksef_api_token'] = 'API token';
+$lang['einvoice_ksef_company_nip'] = 'Company NIP';
+$lang['einvoice_ksef_auto_sync'] = 'Automatically sync invoices';
+$lang['einvoice_ksef_invoice_template'] = 'Template used for KSeF sync';
+$lang['einvoice_ksef_include_pdf_link'] = 'Include invoice PDF link in payload';
+$lang['einvoice_ksef_help'] = 'Use this section to connect a KSeF bridge or middleware API per owner account.';
+$lang['einvoice_ksef_sync_now'] = 'Sync to KSeF';
+$lang['einvoice_ksef_sync_label'] = 'KSeF status';
+$lang['einvoice_ksef_reference'] = 'KSeF reference';
+$lang['einvoice_ksef_last_sync'] = 'Last sync';
+$lang['einvoice_ksef_status_pending'] = 'Pending';
+$lang['einvoice_ksef_status_skipped'] = 'Skipped';
+$lang['einvoice_ksef_status_success'] = 'Synced';
+$lang['einvoice_ksef_status_error'] = 'Error';
+$lang['einvoice_ksef_disabled'] = 'KSeF sync is disabled.';
+$lang['einvoice_ksef_missing_api_credentials'] = 'KSeF API URL and token are required.';
+$lang['einvoice_ksef_template_missing'] = 'Select an e-Invoice template for KSeF sync.';
+$lang['einvoice_ksef_invoice_not_found'] = 'Invoice not found.';
+$lang['einvoice_ksef_auto_sync_skipped'] = 'Automatic KSeF sync skipped for this invoice.';
+$lang['einvoice_ksef_sync_success'] = 'Invoice synced successfully.';
+$lang['einvoice_ksef_sync_failed'] = 'Invoice sync failed.';

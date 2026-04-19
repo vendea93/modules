@@ -1,0 +1,45 @@
+# Quick Webhook Test Commands
+# Copy and paste these commands into your terminal
+
+# Basic test (no signature)
+curl -X POST 'http://localhost:8080/form_sync/webhook/framer/Contact' \
+  -H 'Content-Type: application/json' \
+  -H 'Framer-Webhook-Submission-Id: test_1234567890_1234' \
+  -d '{
+    "name": "Test User",
+    "email": "test@example.com",
+    "phone": "+1234567890",
+    "message": "Test webhook submission",
+    "company": "Test Company Inc."
+  }'
+
+# Test with signature (replace YOUR_SECRET with your actual webhook secret)
+# First, generate the signature:
+# 1. Create payload: {"name":"Test User","email":"test@example.com"}
+# 2. Concatenate: payload + submission_id
+# 3. Generate HMAC: SHA-256(payload+submission_id, secret)
+# 4. Format: sha256=<hex_hmac>
+
+# Example with signature (you'll need to calculate the signature first):
+# curl -X POST 'http://localhost:8080/form_sync/webhook/framer/Contact' \
+#   -H 'Content-Type: application/json' \
+#   -H 'Framer-Webhook-Submission-Id: test_1234567890_1234' \
+#   -H 'Framer-Signature: sha256=YOUR_CALCULATED_SIGNATURE' \
+#   -d '{"name":"Test User","email":"test@example.com"}'
+
+# Alternative: Use the PHP simulator script
+# php modules/form_sync/tools/simulate_framer_webhook.php --form-id=Contact --url=http://localhost:8080
+
+# Or use the shell script
+# ./modules/form_sync/tools/test_webhook_dev.sh Contact http://localhost:8080
+
+
+
+
+
+
+
+
+
+
+

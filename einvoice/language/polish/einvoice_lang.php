@@ -1,0 +1,40 @@
+<?php
+
+defined('BASEPATH') or exit('No direct script access allowed');
+
+$lang['einvoice'] = 'e-Faktura';
+$lang['settings_group_einvoice'] = 'e-Faktura';
+$lang['einvoice_module_bulk_export'] = 'Eksport e-faktur';
+$lang['einvoice_module_permission_bulk'] = 'Eksport zbiorczy';
+$lang['settings_einvoice_default_template'] = 'Domyślny szablon e-faktury dla faktury';
+$lang['settings_einvoice_default_credit_note_template'] = 'Domyślny szablon e-faktury dla korekty';
+$lang['settings_einvoice_send_as_invoice_email_attachment'] = 'Dołącz e-fakturę do maila z fakturą';
+$lang['settings_einvoice_send_as_credit_note_email_attachment'] = 'Dołącz e-fakturę do maila z korektą';
+$lang['settings_einvoice_templates'] = 'Szablony e-faktur';
+$lang['einvoice_ksef_heading'] = 'Synchronizacja KSeF';
+$lang['einvoice_ksef_enabled'] = 'Włącz synchronizację KSeF';
+$lang['einvoice_ksef_environment'] = 'Środowisko';
+$lang['einvoice_ksef_env_demo'] = 'Demo / testowe';
+$lang['einvoice_ksef_env_production'] = 'Produkcyjne';
+$lang['einvoice_ksef_api_url'] = 'Adres API KSeF / middleware';
+$lang['einvoice_ksef_api_token'] = 'Token API';
+$lang['einvoice_ksef_company_nip'] = 'NIP firmy';
+$lang['einvoice_ksef_auto_sync'] = 'Synchronizuj faktury automatycznie';
+$lang['einvoice_ksef_invoice_template'] = 'Szablon używany do synchronizacji KSeF';
+$lang['einvoice_ksef_include_pdf_link'] = 'Dołącz link do PDF faktury w payloadzie';
+$lang['einvoice_ksef_help'] = 'Tutaj właściciel podłącza własne API KSeF lub middleware i decyduje, czy faktury mają synchronizować się automatycznie.';
+$lang['einvoice_ksef_sync_now'] = 'Synchronizuj do KSeF';
+$lang['einvoice_ksef_sync_label'] = 'Status KSeF';
+$lang['einvoice_ksef_reference'] = 'Referencja KSeF';
+$lang['einvoice_ksef_last_sync'] = 'Ostatnia synchronizacja';
+$lang['einvoice_ksef_status_pending'] = 'Oczekuje';
+$lang['einvoice_ksef_status_skipped'] = 'Pominięto';
+$lang['einvoice_ksef_status_success'] = 'Zsynchronizowano';
+$lang['einvoice_ksef_status_error'] = 'Błąd';
+$lang['einvoice_ksef_disabled'] = 'Synchronizacja KSeF jest wyłączona.';
+$lang['einvoice_ksef_missing_api_credentials'] = 'Uzupełnij adres API KSeF oraz token.';
+$lang['einvoice_ksef_template_missing'] = 'Wybierz szablon e-faktury dla synchronizacji KSeF.';
+$lang['einvoice_ksef_invoice_not_found'] = 'Nie znaleziono faktury.';
+$lang['einvoice_ksef_auto_sync_skipped'] = 'Automatyczna synchronizacja KSeF została pominięta dla tej faktury.';
+$lang['einvoice_ksef_sync_success'] = 'Faktura została zsynchronizowana.';
+$lang['einvoice_ksef_sync_failed'] = 'Synchronizacja faktury nie powiodła się.';

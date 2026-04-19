@@ -1,0 +1,1 @@
+This folder contains the documentations of the individual products - the bundle comes with a single, bundled module - you dont need to install every module separately.

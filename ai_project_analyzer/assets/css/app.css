@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tooltip {
+    border: 0px !important;
+}
+
+@layer components {
+
+    /* AI Analysis Styles - Modern Clean Design */
+    .ai-section-title {
+        @apply ai-text-xl ai-font-bold ai-text-gray-900 ai-mt-8 ai-mb-2 ai-pb-3 first:ai-mt-0;
+    }
+
+    .ai-paragraph {
+        @apply ai-text-base ai-text-gray-700 ai-leading-7 ai-mb-6;
+    }
+
+    .ai-list {
+        @apply ai-space-y-3 ai-mb-6;
+    }
+
+    .ai-list-item {
+        @apply ai-flex ai-items-start ai-text-gray-700 ai-leading-6 ai-relative ai-pl-6 ai-py-1;
+    }
+
+    .ai-list-item::before {
+        content: "•";
+        @apply ai-absolute ai-left-0 ai-top-[0.2rem] ai-text-blue-500 ai-font-bold ai-text-[1.7rem];
+    }
+
+    .ai-action-list {
+        @apply ai-space-y-3 ai-mb-6;
+    }
+
+    .ai-action-item {
+        @apply ai-bg-blue-50 ai-border ai-border-solid ai-border-blue-200 ai-rounded-lg ai-p-4 ai-shadow-sm hover:ai-shadow-md ai-transition-shadow;
+    }
+
+    .ai-action-label {
+        @apply ai-font-semibold ai-text-blue-800 ai-text-sm ai-uppercase ai-tracking-wider ai-mb-2 ai-block;
+    }
+
+    .ai-action-content {
+        @apply ai-text-gray-700 ai-text-sm ai-leading-6;
+    }
+
+    .ai-timeline {
+        @apply ai-relative ai-mb-8 ai-pl-6;
+    }
+
+    .ai-timeline::before {
+        content: "";
+        @apply ai-absolute ai-left-3 ai-top-0 ai-bottom-0 ai-w-0.5 ai-bg-gray-200;
+    }
+
+    .ai-timeline-item {
+        @apply ai-relative ai-mb-8 ai-bg-white ai-rounded-lg ai-shadow-sm ai-border ai-border-solid ai-border-gray-200 ai-ml-6;
+    }
+
+    .ai-timeline-marker {
+        @apply ai-absolute -ai-left-[2.82rem] ai-top-6 ai-w-5 ai-h-5 ai-rounded-full ai-shadow-md ai-flex ai-items-center ai-justify-center;
+    }
+
+    .ai-status-not-started .ai-timeline-marker {
+        @apply ai-bg-gray-400;
+    }
+
+    .ai-status-in-progress .ai-timeline-marker {
+        @apply ai-bg-yellow-400;
+    }
+
+    .ai-status-testing .ai-timeline-marker {
+        @apply ai-bg-blue-500;
+    }
+
+    .ai-status-awaiting-feedback .ai-timeline-marker {
+        @apply ai-bg-orange-500;
+    }
+
+    .ai-status-completed .ai-timeline-marker {
+        @apply ai-bg-green-500;
+    }
+
+    .ai-status-completed .ai-timeline-marker::after {
+        content: "✓";
+        @apply ai-text-white ai-text-xs ai-font-bold;
+    }
+
+    .ai-timeline-content {
+        @apply ai-p-5;
+    }
+
+    .ai-timeline-title {
+        @apply ai-font-semibold ai-text-gray-900 ai-text-lg ai-mb-2 ai-flex ai-items-center ai-gap-3;
+    }
+
+    .ai-timeline-description {
+        @apply ai-text-gray-600 ai-text-sm ai-leading-6 ai-mb-3;
+    }
+
+    .ai-timeline-status {
+        @apply ai-inline-flex ai-items-center ai-px-3 ai-py-1 ai-rounded-full ai-text-xs ai-font-medium;
+    }
+
+    .ai-status-not-started .ai-timeline-status {
+        @apply ai-bg-gray-100 ai-text-gray-800;
+    }
+
+    .ai-status-in-progress .ai-timeline-status {
+        @apply ai-bg-yellow-100 ai-text-yellow-800;
+    }
+
+    .ai-status-testing .ai-timeline-status {
+        @apply ai-bg-blue-100 ai-text-blue-800;
+    }
+
+    .ai-status-awaiting-feedback .ai-timeline-status {
+        @apply ai-bg-orange-100 ai-text-orange-800;
+    }
+
+    .ai-status-completed .ai-timeline-status {
+        @apply ai-bg-green-100 ai-text-green-800;
+    }
+
+    /* Key point styling */
+    .ai-key-point {
+        @apply ai-bg-amber-50 ai-border ai-border-solid ai-border-amber-200 ai-rounded-lg ai-p-4 ai-mb-6;
+    }
+
+    .ai-key-point-label {
+        @apply ai-font-bold ai-text-amber-800 ai-uppercase ai-text-sm ai-tracking-wider ai-mb-2 ai-block;
+    }
+
+    .ai-key-point-content {
+        @apply ai-text-gray-700 ai-leading-6;
+    }
+
+    /* Status indicators */
+    .ai-status-indicator {
+        @apply ai-inline-flex ai-items-center ai-gap-2 ai-px-3 ai-py-1 ai-rounded-full ai-text-sm ai-font-medium;
+    }
+
+    .ai-status-indicator.ai-in-progress {
+        @apply ai-bg-yellow-100 ai-text-yellow-800;
+    }
+
+    .ai-status-indicator.ai-completed {
+        @apply ai-bg-green-100 ai-text-green-800;
+    }
+
+    .ai-status-indicator.ai-blocked {
+        @apply ai-bg-red-100 ai-text-red-800;
+    }
+}

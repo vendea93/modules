@@ -1,0 +1,170 @@
+.min-width-200px{
+	min-width: 200px !important;
+}
+
+/* Container for each stat card */
+.stat-card {
+    position: relative;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+/* Header styling */
+.stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Tooltip question mark icon */
+.tooltip-icon {
+    position: relative;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Tooltip text styling */
+.tooltip-text {
+    visibility: hidden;
+    width: 180px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    position: absolute;
+    top: -35px;
+    right: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+}
+
+/* Show tooltip on hover */
+.tooltip-icon:hover + .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Stat value styling */
+.stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Mỗi dòng có 5 thẻ */
+    gap: 20px;
+}
+
+@media (max-width: 800px) {
+    .dashboard-stats{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 500px) {
+    .dashboard-stats{
+        grid-template-columns: 1fr;
+    }
+}
+
+.account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.account-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.account-option input[type="radio"] {
+  display: none;
+}
+
+.custom-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #007bff;
+  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+}
+
+.custom-radio::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: #007bff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.account-option input[type="radio"]:checked + .custom-radio::after {
+  opacity: 1;
+}
+
+.stat-card.active {
+    border: 2px solid #007bff;
+}
+
+.stat-card:hover {
+    border: 2px solid #007bff;
+}
+
+
+.loader-action {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #3498db;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+.customers .screen-options-btn {
+    position: absolute;
+    background: #e2e8f0;
+    color: #1e293b;
+    padding: 5px 15px;
+    display: inline-flex;
+    align-items: center;
+    right: 380px;
+    z-index: 98;
+    border-left: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+#map_csv {
+    white-space: pre-line;
+}

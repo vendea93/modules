@@ -1,0 +1,101 @@
+#agentchat-launcher {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1045;
+}
+
+#agentchat-launcher .agentchat-fab {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    color: #fff;
+    border: 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .18);
+    transition: all .15s ease;
+}
+
+#agentchat-launcher .agentchat-fab:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .22);
+}
+
+#agentchat-launcher .agentchat-fab i {
+    font-size: 22px;
+}
+
+#agentchat-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(16, 24, 40, .35);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    z-index: 1040;
+}
+
+#agentchat-flyout {
+    position: fixed;
+    top: 0;
+    right: -460px;
+    height: 100%;
+    width: 420px;
+    max-width: calc(100% - 40px);
+    background: #fff;
+    box-shadow: -12px 0 30px rgba(0, 0, 0, .18);
+    z-index: 1046;
+    transition: right .25s ease;
+    border-left: 1px solid #e8e8e8;
+}
+
+#agentchat-flyout.open {
+    right: 0;
+}
+
+#agentchat-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#agentchat-flyout .ac-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+}
+
+#agentchat-flyout .ac-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+#agentchat-flyout .ac-title i {
+    color: #4f46e5;
+}
+
+#agentchat-flyout .ac-actions .btn {
+    border: none;
+    background: transparent;
+    color: #6b7280;
+    padding: 6px 8px;
+}
+
+#agentchat-flyout .ac-actions .btn:hover {
+    color: #111827;
+}
+
+#agentchat-flyout .ac-body {
+    height: calc(100% - 50px);
+}
+
+@media (max-width: 767px) {
+    #agentchat-flyout {
+        width: 100%;
+        right: -100%;
+    }
+}

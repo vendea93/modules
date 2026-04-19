@@ -1,0 +1,15 @@
+.panel-title[aria-expanded="true"]::after {
+    content: unset;
+}
+
+.drawflow-delete {
+    line-height: 25px !important;
+}
+
+.panel-title::after {
+    content: unset;
+}
+
+.drawflow .drawflow-node {
+    width: 300px !important;
+}
