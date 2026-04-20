@@ -1,5 +1,5 @@
 # FlowQuest / Perfex CRM
-# Zostawiamy tekst i kod, ignorujemy obrazy, archiwa i binaria.
+# Ignorujemy pliki tymczasowe, lokalne, archiwa i zależności generowane automatycznie.
 
 # System / edytory
 .DS_Store
@@ -15,6 +15,18 @@ ehthumbs.db
 .claude/
 __MACOSX/
 
+# Zależności wygenerowane lokalnie
+node_modules/
+**/node_modules/
+vendor/
+**/vendor/
+
+# Pliki środowiskowe i lokalne konfiguracje
+.env
+.env.*
+*.local
+.phpunit.result.cache
+
 # Archiwa i paczki pomocnicze
 *.zip
 *.rar
@@ -23,6 +35,9 @@ __MACOSX/
 *.gz
 *.bz2
 *.xz
+*.tar.gz
+*.tar.bz2
+*.phar
 
 # Dane / eksporty / backupy
 *.sql
@@ -60,18 +75,11 @@ storage/
 uploads/
 *.log
 *.map
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Multimedia i zasoby binarne
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.webp
-*.bmp
-*.ico
-*.tif
-*.tiff
-*.svg
+# Duże multimedia / pliki binarne, które zwykle nie powinny trafiać do repozytorium
 *.mp3
 *.wav
 *.ogg
@@ -82,12 +90,7 @@ uploads/
 *.webm
 *.mkv
 
-# Fonty i pliki skompilowane
-*.ttf
-*.otf
-*.woff
-*.woff2
-*.eot
+# Pliki skompilowane / binaria
 *.exe
 *.dll
 *.so
@@ -100,5 +103,7 @@ uploads/
 *.obj
 *.jar
 *.wasm
+
+# Uwaga: obrazy i fonty pozostawiono, ponieważ moduły mogą ich potrzebować jako zasobów.
 
 
