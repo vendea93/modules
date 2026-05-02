@@ -31,14 +31,17 @@ hooks()->add_action('after_cron_run','run_cron_job_custom_email');
  * Add CSRF Exclusion Support
  * @return stylesheet / script
  */
-function add_csrf_support()
-{
-	$configfile = FCPATH . 'application/config/config.php';
-	$searchforit = file_get_contents($configfile);
-	$csrfstring = 'admin/customemailandsmsnotifications/email_sms/sendEmailSms';
-	
-	if(strpos($searchforit,$csrfstring) == false) {
-		file_put_contents($configfile, str_replace('$config[\'csrf_exclude_uris\'] = [', '$config[\'csrf_exclude_uris\'] = [\'admin/customemailandsmsnotifications/email_sms/sendEmailSms\', ', $searchforit)); 
+if (!function_exists('add_csrf_support')) {
+	function add_csrf_support()
+	{
+		$CI = &get_instance();
+		$csrfstring = 'admin/customemailandsmsnotifications/email_sms/sendEmailSms';
+
+		$uris = (array) $CI->config->item('csrf_exclude_uris');
+		if (!in_array($csrfstring, $uris, true)) {
+			$uris[] = $csrfstring;
+			$CI->config->set_item('csrf_exclude_uris', $uris);
+		}
 	}
 }
 

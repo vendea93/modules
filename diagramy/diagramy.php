@@ -14,8 +14,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 define('DRAWIO_MODULE_NAME', 'diagramy');
 
-modules\diagramy\core\Apiinit::the_da_vinci_code(DRAWIO_MODULE_NAME);
-modules\diagramy\core\Apiinit::ease_of_mind(DRAWIO_MODULE_NAME);
 
 hooks()->add_action('admin_init', 'diagramy_module_init_menu_items');
 hooks()->add_action('admin_init', 'diagramy_permissions');

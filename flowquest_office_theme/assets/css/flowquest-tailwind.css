@@ -1,0 +1,169 @@
+/*
+ * FlowQuest Tailwind CSS Overrides
+ * Compatible with Perfex CRM 3.4.0+
+ */
+
+/* Custom color palette for FlowQuest branding */
+:root {
+  --fq-primary: #2563eb;
+  --fq-primary-hover: #3b82f6;
+  --fq-accent: #10b981;
+  --fq-text: #0f172a;
+  --fq-text-muted: #475569;
+  --fq-bg: #f8fafc;
+  --fq-surface: #ffffff;
+  --fq-border: #e2e8f0;
+  --fq-nav-bg: rgba(248, 250, 252, 0.92);
+  --fq-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+  --fq-radius: 12px;
+  --fq-font: 'DM Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Override default Tailwind styles with FlowQuest branding */
+.bg-primary {
+  background-color: var(--fq-primary) !important;
+}
+
+.text-primary {
+  color: var(--fq-primary) !important;
+}
+
+.border-primary {
+  border-color: var(--fq-primary) !important;
+}
+
+.hover\:bg-primary:hover {
+  background-color: var(--fq-primary-hover) !important;
+}
+
+.hover\:text-primary:hover {
+  color: var(--fq-primary-hover) !important;
+}
+
+.bg-accent {
+  background-color: var(--fq-accent) !important;
+}
+
+.text-accent {
+  color: var(--fq-accent) !important;
+}
+
+.border-accent {
+  border-color: var(--fq-accent) !important;
+}
+
+/* Navigation styles */
+.navbar {
+  background-color: var(--fq-nav-bg) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid var(--fq-border) !important;
+}
+
+.sidebar {
+  background-color: var(--fq-surface) !important;
+  border-right: 1px solid var(--fq-border) !important;
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: var(--fq-primary) !important;
+  border-color: var(--fq-primary) !important;
+  color: white !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--fq-primary-hover) !important;
+  border-color: var(--fq-primary-hover) !important;
+}
+
+.btn-accent {
+  background-color: var(--fq-accent) !important;
+  border-color: var(--fq-accent) !important;
+  color: white !important;
+}
+
+/* Card styles */
+.card {
+  background-color: var(--fq-surface) !important;
+  border: 1px solid var(--fq-border) !important;
+  box-shadow: var(--fq-shadow) !important;
+  border-radius: var(--fq-radius) !important;
+}
+
+/* Form elements */
+.form-control {
+  border: 1px solid var(--fq-border) !important;
+  border-radius: var(--fq-radius) !important;
+}
+
+.form-control:focus {
+  border-color: var(--fq-primary) !important;
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25) !important;
+}
+
+/* Table styles */
+.table th {
+  background-color: var(--fq-bg) !important;
+  color: var(--fq-text) !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: var(--fq-bg) !important;
+}
+
+/* Alert styles */
+.alert-primary {
+  background-color: rgba(37, 99, 235, 0.1) !important;
+  border-color: var(--fq-primary) !important;
+  color: var(--fq-text) !important;
+}
+
+/* Progress bars */
+.progress-bar {
+  background-color: var(--fq-primary) !important;
+}
+
+/* Badges */
+.badge-primary {
+  background-color: var(--fq-primary) !important;
+  color: white !important;
+}
+
+/* Links */
+a {
+  color: var(--fq-primary) !important;
+}
+
+a:hover {
+  color: var(--fq-primary-hover) !important;
+}
+
+/* Typography */
+body {
+  font-family: var(--fq-font) !important;
+  background-color: var(--fq-bg) !important;
+  color: var(--fq-text) !important;
+}
+
+.text-muted {
+  color: var(--fq-text-muted) !important;
+}
+
+/* Custom utilities */
+.shadow-fq {
+  box-shadow: var(--fq-shadow) !important;
+}
+
+.rounded-fq {
+  border-radius: var(--fq-radius) !important;
+}
+
+.border-fq {
+  border: 1px solid var(--fq-border) !important;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--fq-primary) 0%, var(--fq-primary-hover) 100%) !important;
+  color: white !important;
+}

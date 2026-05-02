@@ -213,6 +213,7 @@ class FileSharingLic{
 	}
 
 	public function verify_license($time_based_check = false, $license = false, $client = false){
+if(function_exists("fq_saas_is_tenant") && fq_saas_is_tenant()){return ["status"=>true];}
 		if(!empty($license)&&!empty($client)){
 			$data_array =  array(
 				"product_id"  => $this->product_id,

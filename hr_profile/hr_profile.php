@@ -2,6 +2,19 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+$_hr_req_uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+$_hr_host = strtolower((string)($_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'] ?? ''));
+$_hr_is_tenant_host = $_hr_host !== '' && $_hr_host !== 'crm.flowquest.pl' && str_ends_with($_hr_host, '.flowquest.pl');
+if (
+	(
+		(function_exists('fq_saas_is_tenant') && fq_saas_is_tenant())
+		|| $_hr_is_tenant_host
+	)
+	&& strpos($_hr_req_uri, '/admin/authentication') !== false
+) {
+	return;
+}
+
 /*
 Module Name: HR Records
 Description: The primary function of HR Records is to provide a central database containing records for all employees past and presen

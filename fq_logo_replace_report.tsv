@@ -1,0 +1,13 @@
+logo_file	slug	db	old_logo	new_logo	file_status	db_status
+3.png	hotel	ps_hotel	fq_hotel_logo.png	fq_hotel_logo.png	OK	OK
+4.png	agencja	ps_agencja	fq_agencja_logo.png	fq_agencja_logo.png	OK	OK
+5.png	gastronomia	ps_gastronomia	fq_gastronomia_logo.png	fq_gastronomia_logo.png	OK	OK
+6.png	beauty	ps_beauty	fq_beauty_logo.png	fq_beauty_logo.png	OK	OK
+7.png	rekrutacja	ps_rekrutacja	fq_rekrutacja_logo.png	fq_rekrutacja_logo.png	OK	OK
+8.png	logistyka	ps_logistyka	fq_logistyka_logo.png	fq_logistyka_logo.png	OK	OK
+9.png	oze	ps_oze	fq_oze_logo.png	fq_oze_logo.png	OK	OK
+10.png	warsztat	ps_warsztat	fq_warsztat_logo.png	fq_warsztat_logo.png	OK	OK
+11.png	nieruchomosci	ps_nieruchomosci	fq_nieruchomosci_logo.png	fq_nieruchomosci_logo.png	OK	OK
+12.png	medycyna	ps_medycyna	fq_medycyna_logo.png	fq_medycyna_logo.png	OK	OK
+13.png	ecommerce	ps_ecommerce	fq_ecommerce_logo.png	fq_ecommerce_logo.png	OK	OK
+14.png	kursy	ps_kursy	fq_kursy_logo.png	fq_kursy_logo.png	OK	OK

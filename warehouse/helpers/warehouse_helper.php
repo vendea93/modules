@@ -182,11 +182,12 @@ function get_pr_order($id = false)
  * @param  string  $value
  * @return float
  */
-function reformat_currency_j($value)
-{
-
-    $f_dot = new_str_replace(',','', $value);
-    return ((float)$f_dot + 0);
+if (!function_exists('reformat_currency_j')) {
+    function reformat_currency_j($value)
+    {
+        $f_dot = new_str_replace(',', '', $value);
+        return ((float)$f_dot + 0);
+    }
 }
 
 

@@ -2,7 +2,7 @@
 
 
 
-class Mapi extends CI_controller
+class Mapi extends App_Controller
 
 
 

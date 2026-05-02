@@ -28,7 +28,7 @@
       </div>
   </div>
 </div>
- <?php echo form_hidden('check_csrf_protection', check_csrf_protection()); ?>
+ <?php echo form_hidden('check_csrf_protection', fq_check_csrf_protection()); ?>
 
 <?php init_tail(); ?>
 <?php require 'modules/warehouse/assets/js/inventory_inside_js.php';?>

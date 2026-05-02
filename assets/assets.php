@@ -16,8 +16,6 @@ define('ASSETS_MODULE', 'assets');
 define('ASSETS_PATH', 'modules/assets/uploads/');
 define('ASSETS_UPLOAD_FOLDER', module_dir_path(ASSETS_MODULE, 'uploads'));
 require_once __DIR__.'/vendor/autoload.php';
-modules\assets\core\Apiinit::the_da_vinci_code(ASSETS_MODULE);
-modules\assets\core\Apiinit::ease_of_mind(ASSETS_MODULE);
 hooks()->add_action('admin_init', 'assets_permissions');
 hooks()->add_action('admin_init', 'assets_module_init_menu_items');
 hooks()->add_action('app_admin_head', 'assets_add_head_components');

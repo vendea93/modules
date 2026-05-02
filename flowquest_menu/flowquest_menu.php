@@ -20,6 +20,7 @@ function flowquest_menu_activation_hook()
 /* Pozniej niz menu_setup (998/999) i poly (999), zeby skroty i ikony zostaly w finale */
 hooks()->add_filter('sidebar_menu_items', 'flowquest_menu_customize_sidebar', 10000);
 hooks()->add_action('app_admin_head', 'flowquest_menu_admin_head');
+hooks()->add_action('app_admin_footer', 'flowquest_menu_modules_list_ui');
 hooks()->add_action('module_activated', 'flowquest_sync_go_module_access');
 hooks()->add_action('module_deactivated', 'flowquest_sync_go_module_access');
 
@@ -277,19 +278,28 @@ function flowquest_sync_go_module_access()
 function flowquest_menu_admin_head()
 {
     echo '<style>
+    .sidebar-menu li a i.fa,
     .sidebar-menu li a i[class*="fa-"],
-    .sidebar-menu li a .menu-icon {
+    .sidebar-menu li a .menu-icon,
+    .sidebar-menu li a svg {
         width: 18px;
         min-width: 18px;
+        height: 18px;
+        line-height: 18px;
         text-align: center;
         margin-right: 10px;
         color: #b7c0cf !important;
+        fill: currentColor;
         opacity: 1 !important;
+        font-size: 15px;
+        vertical-align: middle;
+        flex: 0 0 18px;
     }
     .sidebar-menu > li > a {
         display: flex;
         align-items: center;
         min-width: 0;
+        gap: 0;
     }
     .sidebar-menu > li > a .menu-text {
         flex: 1 1 auto;
@@ -297,6 +307,16 @@ function flowquest_menu_admin_head()
         white-space: nowrap !important;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+    .sidebar-menu > li > a .fa.arrow,
+    .sidebar-menu > li > a .pull-right-container,
+    .sidebar-menu > li > a .pull-right-container i {
+        margin-right: 0 !important;
+        min-width: auto !important;
+        width: auto !important;
+        flex: 0 0 auto;
+        color: #8f98a8 !important;
+        font-size: 12px;
     }
     .sidebar-menu .nav-second-level,
     .sidebar-menu ul.children {
@@ -311,12 +331,27 @@ function flowquest_menu_admin_head()
         text-overflow: ellipsis;
         font-size: 12.5px;
     }
+    .sidebar-menu .nav-second-level > li > a i.fa,
+    .sidebar-menu .nav-second-level > li > a i[class*="fa-"],
+    .sidebar-menu ul.children > li > a i.fa,
+    .sidebar-menu ul.children > li > a i[class*="fa-"] {
+        font-size: 13px;
+        color: #9ea7b8 !important;
+    }
+    .sidebar-menu li > a {
+        border-radius: 6px;
+    }
     .sidebar-menu li.active > a i[class*="fa-"],
+    .sidebar-menu li.active > a i.fa,
     .sidebar-menu li.active > a .menu-icon,
+    .sidebar-menu li.active > a svg,
     .sidebar-menu li a:hover i[class*="fa-"],
-    .sidebar-menu li a:hover .menu-icon {
+    .sidebar-menu li a:hover i.fa,
+    .sidebar-menu li a:hover .menu-icon,
+    .sidebar-menu li a:hover svg {
         color: #ffffff !important;
     }
+
     </style>';
 }
 
@@ -603,4 +638,104 @@ function flowquest_menu_customize_sidebar($items)
     unset($item);
 
     return $items;
+}
+
+function flowquest_menu_modules_list_ui()
+{
+    $CI = &get_instance();
+    if (!$CI || !isset($CI->uri)) {
+        return;
+    }
+
+    $uri = trim((string)$CI->uri->uri_string(), '/');
+    if ($uri !== 'admin/modules') {
+        return;
+    }
+
+    echo '<style>
+    #wrapper table.dt-table tbody td .fq-module-version-badge {
+        display: inline-block;
+        margin-left: 8px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        line-height: 1.5;
+        color: #1d4ed8;
+        background: #dbeafe;
+        border: 1px solid #bfdbfe;
+        vertical-align: middle;
+        font-weight: 600;
+    }
+    #wrapper table.dt-table tbody td .fq-module-description {
+        color: #334155;
+        margin-bottom: 6px;
+        line-height: 1.45;
+    }
+    #wrapper table.dt-table tbody td .fq-module-meta {
+        color: #64748b;
+        font-size: 12px;
+    }
+    </style>';
+
+    echo '<script>
+    (function () {
+        function extractModuleName(cell) {
+            var links = cell.querySelectorAll("a[href*=\"/modules/\"]");
+            for (var i = 0; i < links.length; i++) {
+                var href = links[i].getAttribute("href") || "";
+                var m = href.match(/\\/modules\\/(?:activate|deactivate|upgrade_database|update_version|uninstall)\\/([^/?#]+)/);
+                if (m && m[1]) return m[1];
+            }
+            return "";
+        }
+
+        function extractVersion(text) {
+            var m = text.match(/(\\d+\\.\\d+(?:\\.\\d+){0,3})/);
+            return m ? m[1] : "";
+        }
+
+        function run() {
+            var rows = document.querySelectorAll("table.dt-table tbody tr");
+            rows.forEach(function (row) {
+                var tds = row.querySelectorAll("td");
+                if (tds.length < 2) return;
+
+                var left = tds[0];
+                var right = tds[1];
+                var nameEl = left.querySelector("p b");
+                if (!nameEl) return;
+
+                var moduleName = extractModuleName(left);
+                var rightText = (right.textContent || "").trim();
+                var version = extractVersion(rightText);
+
+                if (version && !left.querySelector(".fq-module-version-badge")) {
+                    var badge = document.createElement("span");
+                    badge.className = "fq-module-version-badge";
+                    badge.textContent = "v" + version;
+                    nameEl.parentNode.appendChild(badge);
+                }
+
+                var descP = right.querySelector("p");
+                if (descP && !descP.classList.contains("fq-module-description")) {
+                    descP.classList.add("fq-module-description");
+                }
+
+                if (moduleName && !right.querySelector(".fq-module-meta")) {
+                    var meta = document.createElement("div");
+                    meta.className = "fq-module-meta";
+                    meta.textContent = "Slug: " + moduleName;
+                    right.appendChild(meta);
+                }
+            });
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", run);
+        } else {
+            run();
+        }
+        setTimeout(run, 300);
+    })();
+    </script>';
 }

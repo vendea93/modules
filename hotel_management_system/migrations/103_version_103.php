@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Migration_Version_103 extends App_module_migration {
+class Migration_hotel_management_system_Version_103 extends App_module_migration {
 	protected $module_name = 'hotel_management_system';
 	protected int $version = 103;
 

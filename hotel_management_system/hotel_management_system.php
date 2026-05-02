@@ -2,6 +2,15 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+if (
+	function_exists('fq_saas_is_tenant')
+	&& fq_saas_is_tenant()
+	&& isset($_SERVER['REQUEST_URI'])
+	&& strpos((string)$_SERVER['REQUEST_URI'], '/admin/authentication') !== false
+) {
+	return;
+}
+
 /*
 Module Name: Hotel Management System
 Description: A module for managing properties, rooms, bookings, and staff assignments for hotel/Airbnb style rentals
@@ -11,9 +20,21 @@ Author: Zegaware
 Author URI: Zegaware.com
 */
 
-// Define module constants
-const HMS_MODULE_NAME = 'hotel_management_system';
-define("HMS_MODULE_UPLOAD_FOLDER", module_dir_path(HMS_MODULE_NAME, 'uploads'));
+// Define module constants. Tenants can bootstrap active modules more than once
+// through SaaS routing, so keep these declarations idempotent.
+defined('HMS_MODULE_NAME') or define('HMS_MODULE_NAME', 'hotel_management_system');
+defined('HMS_MODULE_UPLOAD_FOLDER') or define('HMS_MODULE_UPLOAD_FOLDER', module_dir_path(HMS_MODULE_NAME, 'uploads'));
+
+if (
+	function_exists('fq_saas_is_tenant')
+	&& fq_saas_is_tenant()
+	&& isset($_SERVER['REQUEST_URI'])
+	&& strpos((string) $_SERVER['REQUEST_URI'], '/hotel_management_system') === false
+) {
+	return;
+}
+
+require_once __DIR__ . '/libraries/Zegaware_license.php';
 
 // Register activation hook
 register_activation_hook(HMS_MODULE_NAME, 'hotel_management_system_activation_hook');
@@ -30,12 +51,17 @@ register_language_files(HMS_MODULE_NAME, [HMS_MODULE_NAME]);
 // Register module tables
 $CI = &get_instance();
 
-// Load helpers
-$CI->load->helper(HMS_MODULE_NAME . '/hotel_management_system');
-$CI->load->helper(HMS_MODULE_NAME . '/migration_log');
+// Na tenantach nie bootstrapujemy ciężkich elementów poza kontekstem modułu,
+// żeby uniknąć globalnych 500 na stronach logowania/dashboard.
+$hms_request_uri = $_SERVER['REQUEST_URI'] ?? '';
+$hms_is_module_request = strpos($hms_request_uri, '/hotel_management_system') !== false;
+$hms_is_tenant = function_exists('fq_saas_is_tenant') && fq_saas_is_tenant();
 
-// Load module models
-$CI->load->model(HMS_MODULE_NAME . '/landlord_model');
+if (!$hms_is_tenant || $hms_is_module_request) {
+	$CI->load->helper(HMS_MODULE_NAME . '/hotel_management_system');
+	$CI->load->helper(HMS_MODULE_NAME . '/migration_log');
+	$CI->load->model(HMS_MODULE_NAME . '/landlord_model');
+}
 
 // Add module CSS/JS
 hooks()->add_action('admin_init', 'hotel_management_system_admin_init');
@@ -68,12 +94,14 @@ function hotel_management_system_uninstall_hook()
 }
 
 
-function app_init_required_services()
-{
-	require_once APP_MODULES_PATH . HMS_MODULE_NAME . '/libraries/Zegaware_license.php';
+if (!function_exists('hotel_management_system_app_init_required_services')) {
+	function hotel_management_system_app_init_required_services()
+	{
+		require_once APP_MODULES_PATH . HMS_MODULE_NAME . '/libraries/Zegaware_license.php';
+	}
 }
 
-hooks()->add_action('app_init', 'app_init_required_services');
+hooks()->add_action('app_init', 'hotel_management_system_app_init_required_services');
 
 function pme_add_license_link_to_module_list(array $action_links)
 {
@@ -91,6 +119,11 @@ function zegaware_hms_check_license()
 
 	if (str_contains($request_uri, '/admin/' . HMS_MODULE_NAME))
 	{
+		if (function_exists('fq_saas_demo_tenant_admin_marketplace_enabled') && fq_saas_demo_tenant_admin_marketplace_enabled())
+		{
+			return;
+		}
+
 		$is_activated = Zegaware_license::is_activated(HMS_MODULE_NAME);
 
 		if ( ! $is_activated
@@ -167,12 +200,13 @@ function hotel_management_system_add_menu_items()
 	$CI = &get_instance();
 
 	// Main menu item
-	$is_activated = Zegaware_license::is_activated(HMS_MODULE_NAME);
+	$is_activated = Zegaware_license::is_activated(HMS_MODULE_NAME)
+		|| (function_exists('fq_saas_demo_tenant_admin_marketplace_enabled') && fq_saas_demo_tenant_admin_marketplace_enabled());
 	if ($is_activated)
 	{
 		$CI->app_menu->add_sidebar_menu_item('hotel-management', [
 			'name' => _l('hotel_management_system'),
-			'href' => admin_url('hotel_management_system'),
+			'href' => admin_url('hotel_management_system/bookings'),
 			'position' => 30,
 			'icon' => 'fa fa-hotel',
 		]);

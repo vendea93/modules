@@ -16,7 +16,6 @@ defined('BASEPATH') || exit('No direct script access allowed');
 define('EXTENDED_EMAIL_MODULE', 'extended_email');
 
 require __DIR__ . '/vendor/autoload.php';
-modules\extended_email\core\Apiinit::the_da_vinci_code(EXTENDED_EMAIL_MODULE);
 require_once __DIR__ . '/install.php';
 
 // get codeigniter instance

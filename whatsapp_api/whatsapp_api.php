@@ -25,7 +25,6 @@ define('WHATSAPP_API_UPLOAD_FOLDER', module_dir_path(WHATSAPP_API_MODULE, 'uploa
 // Get codeigniter instance
 $CI = &get_instance();
 
-modules\whatsapp_api\core\Apiinit::the_da_vinci_code(WHATSAPP_API_MODULE);
 require_once __DIR__ . '/install.php';
 
 /*
