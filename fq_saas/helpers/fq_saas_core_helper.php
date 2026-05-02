@@ -1006,6 +1006,7 @@ function fq_saas_tenant_demo_reset_info()
 
     $slug = $tenant->slug ?? '';
     if (empty($slug)) return null;
+    if ($slug === 'go') return null;
 
     $demo_raw = fq_saas_tenant_get_super_option('fq_saas_demo_instance');
     if (empty($demo_raw)) return null;
@@ -1032,6 +1033,16 @@ function fq_saas_tenant_demo_reset_info()
         'next_reset_time'     => $next_reset,
         'seconds_until_reset' => $seconds_until,
     ];
+}
+
+/**
+ * Check whether the current tenant is configured as a demo instance.
+ *
+ * @return bool
+ */
+function fq_saas_tenant_is_demo_instance()
+{
+    return !empty(fq_saas_tenant_demo_reset_info());
 }
 
 /**
@@ -2107,13 +2118,14 @@ function fq_saas_tenant_disabled_default_modules(?object $tenant = null, $mode =
 {
     static $cache = [];
 
-    if (isset($cache[$mode]))
-        return $cache[$mode];
-
     $can_cache = false;
 
     // Get the tenant object
     $tenant = $tenant ?? fq_saas_tenant();
+    $cache_key = $mode . ':' . (string) ($tenant->id ?? $tenant->slug ?? 'current');
+
+    if (isset($cache[$cache_key]))
+        return $cache[$cache_key];
 
     // Get the package and modules
     $package = isset($tenant->package_invoice) ? $tenant->package_invoice : null;
@@ -2149,7 +2161,7 @@ function fq_saas_tenant_disabled_default_modules(?object $tenant = null, $mode =
     $tenant_default_disabled_modules = fq_saas_alias_disabled_default_modules($tenant_default_disabled_modules);
 
     if ($can_cache) {
-        $cache[$mode] = $tenant_default_disabled_modules;
+        $cache[$cache_key] = $tenant_default_disabled_modules;
     }
 
     return $tenant_default_disabled_modules;

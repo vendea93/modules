@@ -60,7 +60,10 @@ function perfex_office_theme_includes()
  */
 function perfex_office_theme_head_component()
 {
-    echo '<link href="' . base_url('modules/perfex_office_theme/assets/css/theme_styles.css') . '"  rel="stylesheet" type="text/css" >';
+    $theme_styles_path = module_dir_path(PERFEX_OFFICE_THEME, 'assets/css/theme_styles.css');
+    $theme_styles_version = file_exists($theme_styles_path) ? filemtime($theme_styles_path) : time();
+
+    echo '<link href="' . base_url('modules/perfex_office_theme/assets/css/theme_styles.css?v=' . $theme_styles_version) . '"  rel="stylesheet" type="text/css" >';
     echo '<script src="' . module_dir_url(PERFEX_OFFICE_THEME, 'assets/js/third-party/nanobar.js') . '"></script>';
     echo '<script src="' . module_dir_url(PERFEX_OFFICE_THEME, 'assets/js/third-party/waves076.min.js') . '"></script>';
 }

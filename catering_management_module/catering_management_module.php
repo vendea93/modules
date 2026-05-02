@@ -6,6 +6,15 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+if (
+	function_exists('fq_saas_is_tenant')
+	&& fq_saas_is_tenant()
+	&& isset($_SERVER['REQUEST_URI'])
+	&& strpos((string)$_SERVER['REQUEST_URI'], '/admin/authentication') !== false
+) {
+	return;
+}
+
 /*
 Module Name: Catering Management Module
 Description: Catering Management Module
@@ -223,13 +232,15 @@ hooks()->add_action('admin_init', 'zegaware_cmm_add_permissions', 20);
 /**
  * Add CSS in admin head
  */
-function zegaware_cmm_admin_head()
-{
-	$CI = &get_instance();
-
-	if (strpos($_SERVER['REQUEST_URI'], 'catering_management') !== FALSE)
+if (!function_exists('zegaware_cmm_admin_head')) {
+	function zegaware_cmm_admin_head()
 	{
-		echo '<link href="'.module_dir_url(CATERING_MANAGEMENT_MODULE_NAME, 'assets/css/catering-management.css').'" rel="stylesheet">';
+		$CI = &get_instance();
+
+		if (strpos($_SERVER['REQUEST_URI'], 'catering_management') !== FALSE)
+		{
+			echo '<link href="'.module_dir_url(CATERING_MANAGEMENT_MODULE_NAME, 'assets/css/catering-management.css').'" rel="stylesheet">';
+		}
 	}
 }
 

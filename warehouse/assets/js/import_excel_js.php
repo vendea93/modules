@@ -27,7 +27,7 @@ function uploadfilecsv(event){
     if(($("#file_csv").val() != '') && ($("#file_csv").val().split('.').pop() == 'xlsx')){
     var formData = new FormData();
     formData.append("file_csv", $('#file_csv')[0].files[0]);
-    if(<?php echo  check_csrf_protection(); ?>){
+    if(<?php echo  fq_check_csrf_protection(); ?>){
       formData.append(csrfData.token_name, csrfData.hash);
     }
     formData.append("leads_import", $('input[name="leads_import"]').val());
@@ -99,7 +99,7 @@ function uploadfilecsv1(event){
     if(($("#file_csv1").val() != '') && ($("#file_csv1").val().split('.').pop() == 'xlsx')){
     var formData = new FormData();
     formData.append("file_csv", $('#file_csv1')[0].files[0]);
-    if(<?php echo  check_csrf_protection(); ?>){
+    if(<?php echo  fq_check_csrf_protection(); ?>){
       formData.append(csrfData.token_name, csrfData.hash);
     }
     formData.append("leads_import", $('input[name="leads_import"]').val());

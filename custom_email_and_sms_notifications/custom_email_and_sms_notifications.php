@@ -29,12 +29,13 @@ hooks()->add_action('admin_init', 'add_csrf_support');
  */
 function add_csrf_support()
 {
-	$configfile = FCPATH . 'application/config/config.php';
-	$searchforit = file_get_contents($configfile);
+	$CI = &get_instance();
 	$csrfstring = 'admin/custom_email_and_sms_notifications/email_sms/sendEmailSms';
-	
-	if(strpos($searchforit,$csrfstring) == false) {
-		file_put_contents($configfile, str_replace('$config[\'csrf_exclude_uris\'] = [', '$config[\'csrf_exclude_uris\'] = [\'admin/custom_email_and_sms_notifications/email_sms/sendEmailSms\', ', $searchforit)); 
+
+	$uris = (array) $CI->config->item('csrf_exclude_uris');
+	if (!in_array($csrfstring, $uris, true)) {
+		$uris[] = $csrfstring;
+		$CI->config->set_item('csrf_exclude_uris', $uris);
 	}
 }
 

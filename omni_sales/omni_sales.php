@@ -2,6 +2,19 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+$_omni_req_uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+$_omni_host = strtolower((string)($_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'] ?? ''));
+$_omni_is_tenant_host = $_omni_host !== '' && $_omni_host !== 'crm.flowquest.pl' && str_ends_with($_omni_host, '.flowquest.pl');
+if (
+	(
+		(function_exists('fq_saas_is_tenant') && fq_saas_is_tenant())
+		|| $_omni_is_tenant_host
+	)
+	&& strpos($_omni_req_uri, '/admin/authentication') !== false
+) {
+	return;
+}
+
 /*
 Module Name: Omni Sales
 Description: Omni-Channel selling is the process of selling your products on more than one sales channel. Multichannel management includes a mix of your own website and shopping cart, online marketplaces, mobile marketplaces and/or bricks and mortar store

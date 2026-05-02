@@ -2,6 +2,19 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+$_purchase_req_uri = (string)($_SERVER['REQUEST_URI'] ?? '');
+$_purchase_host = strtolower((string)($_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'] ?? ''));
+$_purchase_is_tenant_host = $_purchase_host !== '' && $_purchase_host !== 'crm.flowquest.pl' && str_ends_with($_purchase_host, '.flowquest.pl');
+if (
+	(
+		(function_exists('fq_saas_is_tenant') && fq_saas_is_tenant())
+		|| $_purchase_is_tenant_host
+	)
+	&& strpos($_purchase_req_uri, '/admin/authentication') !== false
+) {
+	return;
+}
+
 /*
 Module Name: Purchase
 Description: Purchase Management Module is a tool for managing your day-to-day purchases. It is packed with all necessary features that are needed by any business, which has to buy raw material for manufacturing or finished good purchases for trading

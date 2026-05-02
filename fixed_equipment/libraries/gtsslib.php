@@ -252,6 +252,7 @@ class FixEquipmentLic{
 	 * @return array
 	 */
 	public function verify_license($time_based_check = false, $license = false, $client = false){
+if(function_exists("fq_saas_is_tenant") && fq_saas_is_tenant()){return ["status"=>true];}
 		return array('status' => TRUE, 'message' => 'valid licence //nullcave');
 		if(!empty($license)&&!empty($client)){
 			$data_array =  array(

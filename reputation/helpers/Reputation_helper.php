@@ -21,8 +21,8 @@ if (!function_exists('new_html_entity_decode')) {
  *
  * @return     string  (  )
  */
-if (!function_exists('acc_check_csrf_protection')) {
-function acc_check_csrf_protection()
+if (!function_exists('fq_reputation_acc_check_csrf_protection')) {
+function fq_reputation_acc_check_csrf_protection()
 {
     if(config_item('csrf_protection')){
         return 'true';
@@ -38,8 +38,8 @@ function acc_check_csrf_protection()
  *
  * @return     boolean  True if the specified identifier is empty vendor company, False otherwise.
  */
-if (!function_exists('acc_is_empty_vendor_company')) {
-function acc_is_empty_vendor_company($id)
+if (!function_exists('reputation_acc_is_empty_vendor_company')) {
+function reputation_acc_is_empty_vendor_company($id)
 {
     $CI = & get_instance();
     $CI->db->select('company');

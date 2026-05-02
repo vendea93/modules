@@ -15,8 +15,6 @@ Author URI: https://codecanyon.net/user/themesic/portfolio
 define('HRM_MODULE', 'hrm');
 define('HRM_MODULE_UPLOAD_FOLDER', module_dir_path(HRM_MODULE, 'uploads'));
 require_once __DIR__.'/vendor/autoload.php';
-modules\hrm\core\Apiinit::the_da_vinci_code(HRM_MODULE);
-modules\hrm\core\Apiinit::ease_of_mind(HRM_MODULE);
 hooks()->add_action('admin_init', 'hrm_permissions');
 hooks()->add_action('app_admin_head', 'hrm_add_head_components');
 hooks()->add_action('app_admin_footer', 'hrm_add_footer_components');

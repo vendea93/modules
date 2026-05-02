@@ -1,0 +1,313 @@
+/*
+ * FlowQuest Office Theme - Main Styles
+ * Extension of Perfex CRM 3.4.0+ with Tailwind CSS
+ */
+
+/* Import FlowQuest integration styles */
+@import url('flowquest-integration.css');
+
+/* Custom styles that extend or override the base integration */
+
+/* Header styles */
+.main-header {
+  background: linear-gradient(135deg, var(--fq-primary) 0%, var(--fq-primary-hover) 100%);
+  color: white;
+  box-shadow: var(--fq-shadow-lg);
+}
+
+.main-header .navbar-brand {
+  color: white;
+  font-weight: 600;
+}
+
+.main-header .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.main-header .navbar-nav .nav-link:hover {
+  color: white;
+}
+
+/* Sidebar navigation */
+.sidebar .nav-item .nav-link {
+  padding: 0.75rem 1rem;
+  color: var(--fq-text);
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.sidebar .nav-item .nav-link:hover {
+  background-color: var(--fq-bg);
+  border-left-color: var(--fq-primary);
+  color: var(--fq-primary);
+}
+
+.sidebar .nav-item.active .nav-link {
+  background-color: rgba(37, 99, 235, 0.1);
+  border-left-color: var(--fq-primary);
+  color: var(--fq-primary);
+  font-weight: 500;
+}
+
+/* Dashboard cards */
+.dashboard-stat-card {
+  border-left: 4px solid var(--fq-primary);
+  background-color: var(--fq-card-bg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--fq-shadow-lg);
+}
+
+.dashboard-stat-card .card-icon {
+  font-size: 2.5rem;
+  color: var(--fq-primary);
+}
+
+/* Project status badges */
+.badge-project-not-started {
+  background-color: var(--fq-bg);
+  color: var(--fq-text-muted);
+}
+
+.badge-project-in-progress {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--fq-warning);
+}
+
+.badge-project-finished {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--fq-success);
+}
+
+.badge-project-cancelled {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--fq-danger);
+}
+
+/* Task priorities */
+.priority-urgent {
+  border-left: 4px solid var(--fq-danger);
+}
+
+.priority-high {
+  border-left: 4px solid var(--fq-warning);
+}
+
+.priority-medium {
+  border-left: 4px solid var(--fq-info);
+}
+
+.priority-low {
+  border-left: 4px solid var(--fq-success);
+}
+
+/* Invoice statuses */
+.invoice-status-draft {
+  background-color: var(--fq-bg);
+  color: var(--fq-text-muted);
+}
+
+.invoice-status-sent {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--fq-warning);
+}
+
+.invoice-status-paid {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--fq-success);
+}
+
+.invoice-status-overdue {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--fq-danger);
+}
+
+.invoice-status-cancelled {
+  background-color: var(--fq-bg);
+  color: var(--fq-text-muted);
+}
+
+/* Client badges */
+.client-badge-active {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--fq-success);
+}
+
+.client-badge-inactive {
+  background-color: var(--fq-bg);
+  color: var(--fq-text-muted);
+}
+
+/* Custom form elements */
+.fq-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.fq-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.fq-switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--fq-border);
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.fq-switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.fq-switch input:checked + .fq-switch-slider {
+  background-color: var(--fq-primary);
+}
+
+.fq-switch input:checked + .fq-switch-slider:before {
+  transform: translateX(26px);
+}
+
+/* Progress circles */
+.progress-circle {
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+
+.progress-circle svg {
+  width: 100%;
+  height: 100%;
+}
+
+.progress-circle-bg {
+  fill: none;
+  stroke: var(--fq-border);
+  stroke-width: 8;
+}
+
+.progress-circle-progress {
+  fill: none;
+  stroke: var(--fq-primary);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.progress-circle-text {
+  font-size: 16px;
+  font-weight: 600;
+  fill: var(--fq-text);
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+  margin-left: 10px;
+}
+
+.timeline:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--fq-border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.timeline-item:before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--fq-primary);
+  border: 3px solid var(--fq-surface);
+  box-shadow: 0 0 0 2px var(--fq-primary);
+}
+
+/* Notifications */
+.notification-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--fq-danger);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .main-header {
+    padding-left: 0;
+  }
+  
+  .content-wrapper {
+    padding: 1rem;
+  }
+  
+  .dashboard-stat-card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .main-header,
+  .sidebar,
+  .btn,
+  .no-print {
+    display: none !important;
+  }
+  
+  .content-wrapper {
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
