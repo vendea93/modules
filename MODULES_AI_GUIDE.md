@@ -1,0 +1,1 @@
+{'module': 'bash\n# Look for development notes\nfind /var/www/crm.flowquest.pl/modules -name', '*/{module_name}/*': 'View the documentation\ncat /var/www/crm.flowquest.pl/modules/{module_name'}
